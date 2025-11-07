@@ -1,87 +1,153 @@
-# Testing and Debugging MERN Applications
+# MERN Testing App
 
-This assignment focuses on implementing comprehensive testing strategies for a MERN stack application, including unit testing, integration testing, and end-to-end testing, along with debugging techniques.
+A full-stack MERN (MongoDB, Express.js, React, Node.js) application with comprehensive testing setup, including authentication and todo management features.
 
-## Assignment Overview
+## Features
 
-You will:
-1. Set up testing environments for both client and server
-2. Write unit tests for React components and server functions
-3. Implement integration tests for API endpoints
-4. Create end-to-end tests for critical user flows
-5. Apply debugging techniques for common MERN stack issues
+- **User Authentication**: Register and login functionality with JWT tokens
+- **Todo Management**: Create, read, update, and delete todos
+- **Responsive UI**: Built with React and modern UI components
+- **Comprehensive Testing**: Unit, integration, and end-to-end tests
+- **Logging**: Server-side logging with Winston
+- **Error Handling**: Client and server error boundaries and middleware
+
+## Technology Stack
+
+### Frontend
+- React 18.3.1
+- React Router DOM 6.26.1
+- Axios 1.7.2
+- JWT Decode 4.0.0
+- Testing: Jest, React Testing Library, Cypress
+
+### Backend
+- Node.js with Express 4.19.2
+- MongoDB with Mongoose 8.5.4
+- Authentication: bcryptjs, jsonwebtoken
+- Logging: Winston 3.13.1
+- Testing: Jest, Supertest, MongoDB Memory Server
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB (local or cloud instance)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd testing-and-debugging-ensuring-mern-app-reliability-Erico432
+   ```
+
+2. Install all dependencies:
+   ```bash
+   npm run install-all
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the `server` directory with the following variables:
+   ```
+   PORT=5000
+   MONGODB_URI=mongodb://localhost:27017/mern-testing
+   JWT_SECRET=your-secret-key-here
+   NODE_ENV=development
+   ```
+
+## Usage
+
+### Running the Application
+
+Start both client and server concurrently:
+```bash
+npm run dev
+```
+
+This will start:
+- Server on http://localhost:5000
+- Client on http://localhost:3000
+
+### API Endpoints
+
+#### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login user
+
+#### Todos
+- `GET /api/todos` - Get all todos (authenticated)
+- `POST /api/todos` - Create a new todo (authenticated)
+- `PUT /api/todos/:id` - Update a todo (authenticated)
+- `DELETE /api/todos/:id` - Delete a todo (authenticated)
+
+## Testing
+
+### Unit Tests
+Run unit tests for both client and server:
+```bash
+npm run test:unit
+```
+
+### Integration Tests
+Run integration tests:
+```bash
+npm run test:integration
+```
+
+### End-to-End Tests
+Run Cypress e2e tests:
+```bash
+npm run test:e2e
+```
+
+### All Tests
+Run all tests:
+```bash
+npm test
+```
+
+### Test Coverage
+Generate coverage reports:
+```bash
+npm run test:coverage
+```
 
 ## Project Structure
 
 ```
 mern-testing/
-├── client/                 # React front-end
-│   ├── src/                # React source code
+├── client/                 # React frontend
+│   ├── public/
+│   ├── src/
 │   │   ├── components/     # React components
-│   │   ├── tests/          # Client-side tests
-│   │   │   ├── unit/       # Unit tests
-│   │   │   └── integration/ # Integration tests
-│   │   └── App.jsx         # Main application component
-│   └── cypress/            # End-to-end tests
-├── server/                 # Express.js back-end
-│   ├── src/                # Server source code
+│   │   ├── hooks/          # Custom hooks
+│   │   ├── tests/          # Client tests
+│   │   └── utils/          # Utility functions
+│   ├── cypress/            # E2E tests
+│   └── package.json
+├── server/                 # Express backend
+│   ├── src/
+│   │   ├── config/         # Database config
 │   │   ├── controllers/    # Route controllers
+│   │   ├── middleware/     # Custom middleware
 │   │   ├── models/         # Mongoose models
 │   │   ├── routes/         # API routes
-│   │   └── middleware/     # Custom middleware
-│   └── tests/              # Server-side tests
-│       ├── unit/           # Unit tests
-│       └── integration/    # Integration tests
-├── jest.config.js          # Jest configuration
-└── package.json            # Project dependencies
+│   │   └── utils/          # Utility functions
+│   ├── tests/              # Server tests
+│   └── package.json
+├── .gitignore
+├── README.md
+└── package.json            # Root package with workspaces
 ```
 
-## Getting Started
+## Contributing
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week6-Assignment.md` file
-4. Explore the starter code and existing tests
-5. Complete the tasks outlined in the assignment
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Files Included
+## License
 
-- `Week6-Assignment.md`: Detailed assignment instructions
-- Starter code for a MERN application with basic test setup:
-  - Sample React components with test files
-  - Express routes with test files
-  - Jest and testing library configurations
-  - Example tests for reference
-
-## Requirements
-
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Basic understanding of testing concepts
-
-## Testing Tools
-
-- Jest: JavaScript testing framework
-- React Testing Library: Testing utilities for React
-- Supertest: HTTP assertions for API testing
-- Cypress/Playwright: End-to-end testing framework
-- MongoDB Memory Server: In-memory MongoDB for testing
-
-## Submission
-
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Complete all required tests (unit, integration, and end-to-end)
-2. Achieve at least 70% code coverage for unit tests
-3. Document your testing strategy in the README.md
-4. Include screenshots of your test coverage reports
-5. Demonstrate debugging techniques in your code
-
-## Resources
-
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
-- [Supertest Documentation](https://github.com/visionmedia/supertest)
-- [Cypress Documentation](https://docs.cypress.io/)
-- [MongoDB Testing Best Practices](https://www.mongodb.com/blog/post/mongodb-testing-best-practices) 
+This project is licensed under the ISC License.
